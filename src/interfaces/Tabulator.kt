@@ -7,7 +7,7 @@ import kotlin.math.log10
 interface Tabulator {
 
     val eps: Double
-        get() = 1e-12
+        get() = 1e-4
 
     fun table(): Array<FunctionValue>
     fun decimals(): Int = -log10(eps).toInt()
