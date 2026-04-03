@@ -20,7 +20,10 @@ abstract class AbstractFunction(
         return Array(tableSize) { i ->
             val x = start + i * h
             val fx = value(x)
-            FunctionValue(x, fx)
+            val roundedX = (x / eps).roundToLong() * eps
+            val roundedFx = (fx / eps).roundToLong() * eps
+
+            FunctionValue(roundedX, roundedFx)
         }
     }
 
