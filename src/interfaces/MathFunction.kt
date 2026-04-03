@@ -35,7 +35,6 @@ abstract class MathFunction {
             }
         }
 
-        // Обратный ход
         val x = DoubleArray(n)
         for (i in n - 1 downTo 0) {
             var sum = 0.0

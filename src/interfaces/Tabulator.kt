@@ -7,11 +7,11 @@ import kotlin.math.log10
 interface Tabulator {
 
     val eps: Double
-        get() = 1e-15
+        get() = 1e-12
 
     fun table(): Array<FunctionValue>
     fun decimals(): Int = -log10(eps).toInt()
-    fun colWidth(): Int = 2 + 1 + decimals()
+    fun colWidth(): Int = 4 + 1 + decimals()
     fun makeLine(left: String, mid: String, right: String, cols: Int): String =
         left + List(cols) { "─".repeat(colWidth()) }.joinToString(mid) + right
 
@@ -38,9 +38,4 @@ interface Tabulator {
     }
 
     fun printComparison()
-
-    fun calculateWidth(): Int {
-        return -log10(eps).toInt()
-    }
-
 }

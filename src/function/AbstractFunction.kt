@@ -6,7 +6,6 @@ import interfaces.MathFunction
 import interfaces.Tabulator
 import java.util.*
 import kotlin.math.abs
-import kotlin.math.log10
 import kotlin.math.pow
 import kotlin.math.roundToLong
 
@@ -83,9 +82,9 @@ abstract class AbstractFunction(
             for (j in 0..<m) {
                 A[i][j] = xPowers[i + j]
             }
-            B[i] = table.sumOf { it.fx * it.x.pow(i) }
+            val rawB = table.sumOf { it.fx * it.x.pow(i) }
+            B[i] = (rawB / eps).roundToLong() * eps
         }
-
         return gaussSolve(A, B)
     }
 
@@ -122,7 +121,7 @@ abstract class AbstractFunction(
     override fun printComparison() {
         val table = table()
 
-        val coeffs =  leastSquares(table)
+        val coeffs = leastSquares(table)
         val f = "%.${decimals()}f"
 
         val headers = listOf("x", "f(x)", "L(x)", "|f-L|", "N1", "|f-N1|", "N2", "|f-N2|", "P2", "|f-P2|")

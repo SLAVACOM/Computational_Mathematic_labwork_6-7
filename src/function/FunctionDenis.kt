@@ -1,19 +1,18 @@
 package function
 
-import kotlin.math.exp
-import kotlin.math.sqrt
+import kotlin.math.pow
 
-class Function(
+class FunctionDenis(
     start: Double,
     end: Double,
     tableSize: Int
 ) : AbstractFunction(start, end, tableSize) {
 
     override fun value(x: Double): Double {
-        return 1.5 * exp(sqrt(x * x + 4))
+        return 5.5 * ((4 + x * x).pow(1.0 / 3.0))
     }
 
     override fun toString(): String {
-        return "f(x) = 1.5 * e^(sqrt(x^2 + 4))"
+        return "f(x) = sin(x)"
     }
 }
